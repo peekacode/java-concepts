@@ -1,5 +1,14 @@
 package com.pkp.immutable;
 
+/*
+  Concept - How to create a Immutable Class?
+  Answer - 1. Make the class as 'final'
+           2. Declare instance variables as 'final' and 'private'
+           3. Only Getter methods. NO Setter methods.
+           4. Initialize All variables in constructor
+           5. Perform Cloning of Mutable Objects while returning from getter method.
+*/
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,14 +32,29 @@ public final class Employee {
     }
 
     public Date getDoj() {
+
+        //clone will protect against Mutable Date Class hence Date cannot be changed in Main
         return (Date) doj.clone();
     }
 
     public List<String> getMobile() {
+
+        // below is immutable as ArrayList is Immutable.
         return new ArrayList<>(mobile);
+
+        //Throws exception as List cannot be modified
+        //return Collections.unmodifiableList(mobile);
+
+        // The below is mutable as List is Mutable
+        //return mobile;
     }
 
     public Address getAddress() {
+
+        //returns Mutable Class
+        //return address;
+
+        //returns Immutable Class
         return new Address(address.getCity(),address.getZip());
     }
 
@@ -49,12 +73,12 @@ public final class Employee {
         Employee employee=new Employee("Basant",new Date(),
                 Arrays.stream(new String[]{"1234","5678"}).collect(Collectors.toList()), address);
 
-        employee.getDoj().setDate(20);
+        // Try to change the Date (as Date is Mutable)-- To avoid use clone ..see notes above
+        employee.getDoj().setDate(11);
+
         employee.getMobile().add("9010");
         employee.getAddress().setCity("Pune");
-
         System.out.println(employee);
-
 
     }
 }

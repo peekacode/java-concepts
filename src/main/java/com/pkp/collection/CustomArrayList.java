@@ -25,10 +25,10 @@ public class CustomArrayList extends ArrayList {
 
         System.out.println(list1);
 
-        Set<Student> set=new HashSet<>();
-        Student s1=new Student(101,"Basant");
-        Student s2=new Student(101,"Basant");
-        Student s3=new Student(105,"Prakash");
+        Set<StudentSortingComparable> set=new HashSet<>();
+        StudentSortingComparable s1=new StudentSortingComparable(101,"Basant");
+        StudentSortingComparable s2=new StudentSortingComparable(101,"Basant");
+        StudentSortingComparable s3=new StudentSortingComparable(105,"Prakash");
         set.add(s1);
         set.add(s2);
         set.add(s3);

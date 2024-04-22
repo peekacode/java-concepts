@@ -2,11 +2,11 @@ package com.pkp.collection;
 
 import java.util.Comparator;
 
-public class IdComparator implements Comparator<Student> {
+public class IdComparator implements Comparator<StudentSortingComparable> {
 
 
     @Override
-    public int compare(Student s1, Student s2) {
+    public int compare(StudentSortingComparable s1, StudentSortingComparable s2) {
         if (s1.getId() == s2.getId()) {
             return s1.getName().compareTo(s2.getName());
         } else if (s1.getId() > s2.getId()) {
